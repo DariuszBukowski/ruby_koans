@@ -14,6 +14,12 @@
 #   about_triangle_project_2.rb
 #
 def triangle(a, b, c)
+  if a <= 0 or b <= 0 or c <= 0 
+  	raise TriangleError, "Triangle sides must have positive length."
+  end
+  if a + b <= c or c + b <= a or a + c <= b 
+  	raise TriangleError, "Triangle sides must fulfill triangle inequality."	
+  end
   if a == b and b == c 
   	return :equilateral
   end
