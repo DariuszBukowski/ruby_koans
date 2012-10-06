@@ -1,10 +1,17 @@
 require File.expand_path(File.dirname(__FILE__) + '/edgecase')
 
 # Implement a DiceSet Class here:
-#
-# class DiceSet
-#   code ...
-# end
+# 
+class DiceSet
+  attr_reader :values
+  def roll(a)
+    new_values = @values
+    while new_values == @values do
+      new_values = a.times.map{1 + rand(6)}
+    end
+    @values = new_values
+  end
+end
 
 class AboutDiceProject < EdgeCase::Koan
   def test_can_create_a_dice_set
